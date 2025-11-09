@@ -147,8 +147,7 @@ airflow:
     path: /airflow-logs
     persistence:
       enabled: false      
-  dnsPolicy: ClusterFirst
-  restartPolicy: Always
+
   # dags:
   #   persistence:
   #     enabled: true
