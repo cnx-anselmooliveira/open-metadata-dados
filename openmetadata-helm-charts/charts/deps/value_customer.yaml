@@ -90,6 +90,8 @@ airflow:
       email: spiderman@superhero.org
       firstName: Peter
       lastName: Parker
+
+  web:
     extraVolumeMounts:
       - mountPath: /airflow-logs
         name: efs-airflow-logs
@@ -102,8 +104,6 @@ airflow:
       - name: efs-airflow-dags
         persistentVolumeClaim:
           claimName: openmetadata-dependencies-dags-pvc
-
-  web:
     readinessProbe:
       enabled: true
       initialDelaySeconds: 60
