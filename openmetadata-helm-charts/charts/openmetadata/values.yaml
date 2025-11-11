@@ -63,7 +63,7 @@ openmetadata:
       port: 5432
       driverClass: org.postgresql.Driver
       dbScheme: postgresql
-      databaseName: openmetadata_db
+      databaseName: openmetadata_db2
       auth:
         username: openmetadata_user
         password:
