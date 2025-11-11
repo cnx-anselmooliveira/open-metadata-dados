@@ -11,7 +11,7 @@ global:
 cronJobLabels: {}
 
 mysql:
-  enabled: true
+  enabled: false
   fullnameOverride: "mysql"
   architecture: standalone
   image:
