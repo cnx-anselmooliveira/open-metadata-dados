@@ -62,7 +62,7 @@ openmetadata:
       host: database-1.cluster-csnm8wgeu38w.us-east-1.rds.amazonaws.com
       port: 5432
       driverClass: org.postgresql.Driver
-      dbScheme: postgres
+      dbScheme: postgresql
       databaseName: openmetadata_db
       auth:
         username: openmetadata_user
