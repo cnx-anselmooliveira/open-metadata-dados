@@ -59,7 +59,7 @@ openmetadata:
           secretKey: openmetadata-elasticsearch-password
     database:
       enabled: true
-      host: database-1.cluster-ro-csnm8wgeu38w.us-east-1.rds.amazonaws.com
+      host: database-1.cluster-csnm8wgeu38w.us-east-1.rds.amazonaws.com
       port: 5432
       driverClass: org.postgresql.Driver
       dbScheme: postgres
