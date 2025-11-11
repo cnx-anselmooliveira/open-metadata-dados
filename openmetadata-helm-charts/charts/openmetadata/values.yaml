@@ -70,7 +70,7 @@ openmetadata:
           secretRef: postgres-secrets
           secretKey: openmetadata-postgres-password
       #dbParams: "allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC"
-      dbParams: "awsRegion=eu-west-1&allowPublicKeyRetrieval=true&sslmode=require&serverTimezone=UTC"
+      dbParams: "sslmode=require"
       maxSize: 50
       minSize: 10
       initialSize: 10
