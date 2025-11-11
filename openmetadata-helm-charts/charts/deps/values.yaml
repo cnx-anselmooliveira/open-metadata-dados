@@ -122,7 +122,7 @@ airflow:
     type: postgres
     host: database-1.cluster-csnm8wgeu38w.us-east-1.rds.amazonaws.com
     port: 5432
-    database: database-1
+    database: airflow_db
     user: user_airflow_open
     passwordSecret: airflow-postgres-secrets
     passwordSecretKey: airflow-postgres-password
