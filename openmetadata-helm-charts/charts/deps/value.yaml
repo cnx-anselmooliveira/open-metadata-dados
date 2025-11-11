@@ -1,9 +1,3 @@
-# Default values for deps.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-# MySQL configurations for helm dependency
-# you can find more details about this here https://artifacthub.io/packages/helm/bitnami/mysql
 global:
   security:
     allowInsecureImages: true
@@ -125,13 +119,13 @@ airflow:
   redis:
     enabled: false
   externalDatabase:
-    type: mysql
-    host: mysql
-    port: 3306
-    database: airflow_db
-    user: airflow_user
-    passwordSecret: airflow-mysql-secrets
-    passwordSecretKey: airflow-mysql-password
+    type: postgres
+    host: database-1.cluster-csnm8wgeu38w.us-east-1.rds.amazonaws.com
+    port: 5432
+    database: database-1
+    user: user_airflow_open
+    passwordSecret: airflow-postgres-secrets
+    passwordSecretKey: airflow-postgres-password
   serviceAccount:
     create: true
     name: "airflow"
@@ -146,24 +140,4 @@ airflow:
   logs:
     path: /airflow-logs
     persistence:
-      enabled: false      
-
-  # dags:
-  #   persistence:
-  #     enabled: true
-  #     # NOTE: "" means cluster-default
-  #     storageClass: ""
-  #     size: 1Gi
-  #     accessMode: ReadWriteMany
-  # logs:
-  #   persistence:
-  #     enabled: true
-  #     # empty string means cluster-default
-  #     storageClass: ""
-  #     accessMode: ReadWriteMany
-  #     size: 1Gi
-  #     cleanup:
-  #       enabled: false
-  #       schedule: "0 4 * * *"
-  #       retainDays: 180
-
+      enabled: false
