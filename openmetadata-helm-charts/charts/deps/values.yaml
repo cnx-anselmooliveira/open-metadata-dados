@@ -4,18 +4,6 @@ global:
 
 cronJobLabels: {}
 
-customStorageClassEBS:
-  create: true
-  name: "openmetadata-storage-deps-ebs"
-  isDefaultClass: "false"
-  provisioner: "ebs.csi.aws.com"
-  volumeBindingMode: "WaitForFirstConsumer"
-  reclaimPolicy: "Retain"
-  allowVolumeExpansion: true
-  parameters:
-    type: "gp3"
-    encrypted: "true"
-
 mysql:
   enabled: false
   fullnameOverride: "mysql"
