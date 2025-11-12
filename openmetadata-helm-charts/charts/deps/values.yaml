@@ -45,6 +45,7 @@ opensearch:
   persistence:
     enabled: true
     size: 30Gi
+    storageClass: gp2
   protocol: http
   config:
     opensearch.yml: |
