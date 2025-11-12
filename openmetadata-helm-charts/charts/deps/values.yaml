@@ -4,6 +4,18 @@ global:
 
 cronJobLabels: {}
 
+customStorageClassEBS:
+  create: true
+  name: "openmetadata-storage-deps-ebs"
+  isDefaultClass: "false"
+  provisioner: "ebs.csi.aws.com"
+  volumeBindingMode: "WaitForFirstConsumer"
+  reclaimPolicy: "Retain"
+  allowVolumeExpansion: true
+  parameters:
+    type: "gp3"
+    encrypted: "true"
+
 mysql:
   enabled: false
   fullnameOverride: "mysql"
@@ -45,7 +57,7 @@ opensearch:
   persistence:
     enabled: true
     size: 30Gi
-    storageClass: gp2
+    storageClass: "openmetadata-storage-deps-ebs"
   protocol: http
   config:
     opensearch.yml: |
