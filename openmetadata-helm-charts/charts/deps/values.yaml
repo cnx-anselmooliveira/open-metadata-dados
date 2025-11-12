@@ -43,6 +43,7 @@ opensearch:
   imagePullPolicy: Always
   opensearchJavaOpts: "-Xmx1g -Xms1g"
   persistence:
+    enabled: true
     size: 30Gi
   protocol: http
   config:
