@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Values.airflow.pv.dags.name }}
+  labels:
+    app: {{ .Values.airflow.pv.dags.labels.app }}
+spec:
+  capacity:
+    storage: {{ .Values.airflow.pv.dags.storage }}
+  storageClassName: {{ .Values.airflow.pv.dags.storageClassName | quote }}
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: {{ .Values.airflow.pv.dags.reclaimPolicy }}
+  csi:
+    driver: efs.csi.aws.com
+    volumeHandle: {{ .Values.airflow.pv.dags.volumeHandle }}
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app: {{ .Values.airflow.pvc.dags.labels.app }}
+  name: {{ .Values.airflow.pvc.dags.name }}
+  namespace: {{ .Values.airflow.namespace }}
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: {{ .Values.airflow.pvc.dags.storageClassName | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.airflow.pvc.dags.storage }}
