@@ -162,7 +162,7 @@ airflow:
   customStorageClassEBS:
     create: true
     name: "openmetadata-storage-deps-ebs"
-    isDefaultClass: "false"
+    isDefaultClass: false
     provisioner: "ebs.csi.aws.com"
     volumeBindingMode: "WaitForFirstConsumer"
     reclaimPolicy: "Retain"
