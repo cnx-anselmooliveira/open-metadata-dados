@@ -175,7 +175,7 @@ airflow:
       storage: 20Gi
       storageClassName: "efs-sc"
       reclaimPolicy: Retain
-      volumeHandle: fs-0cdb18f9aa2b0fdb2::airflow-logs
+      volumeHandle: fs-0cdb18f9aa2b0fdb2:/airflow-logs
       mountPath: /airflow-logs
 
     dags:
@@ -185,7 +185,7 @@ airflow:
       storage: 20Gi
       storageClassName: "efs-sc"
       reclaimPolicy: Retain
-      volumeHandle: fs-0bb75839f7263e6fe::airflow-dags
+      volumeHandle: fs-0bb75839f7263e6fe:/airflow-dags
       mountPath: /airflow-dags/dags
 
   pvc:
