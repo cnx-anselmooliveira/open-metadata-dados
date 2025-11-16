@@ -143,3 +143,58 @@ airflow:
     path: /airflow-logs
     persistence:
       enabled: false
+
+  # dags:
+  #   path: /airflow-dags/dags
+  #   persistence:
+  #     enabled: true
+  #     existingClaim: openmetadata-dependencies-dags-pvc
+  #     storageClass: openmetadata-storage-efs-dags
+  #     subPath: airflow-dags
+  # logs:
+  #   path: /airflow-logs
+  #   persistence:
+  #     enabled: true
+  #     existingClaim: openmetadata-dependencies-logs-pvc
+  #     storageClass: openmetadata-storage-efs-logs
+  #     subPath: airflow-logs
+
+  pv:
+    logs:
+      name: openmetadata-logs-pv
+      labels:
+        app: airflow-logs
+      storage: 20Gi
+      storageClassName: "efs-sc"
+      reclaimPolicy: Retain
+      volumeHandle: fs-0cdb18f9aa2b0fdb2::airflow-logs
+      mountPath: /airflow-logs
+
+    dags:
+      name: openmetadata-dags-pv
+      labels:
+        app: airflow-dags
+      storage: 20Gi
+      storageClassName: "efs-sc"
+      reclaimPolicy: Retain
+      volumeHandle: fs-0bb75839f7263e6fe::airflow-dags
+      mountPath: /airflow-dags/dags
+
+  pvc:
+    logs:
+      name: openmetadata-dependencies-logs-pvc
+      labels:
+        app: airflow-logs
+      storage: 20Gi
+      storageClassName: "efs-sc"
+
+    dags:
+      name: openmetadata-dependencies-dags-pvc
+      labels:
+        app: airflow-dags
+      storage: 20Gi
+      storageClassName: "efs-sc"
+
+  permissionsPod:
+    name: airflow-set-permissions
+    image: alpine:3.19      
