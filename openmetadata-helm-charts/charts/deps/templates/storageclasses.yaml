@@ -2,15 +2,11 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: {{ .Values.customStorageClassEBS.name | quote }}
-  annotations:
-    "helm.sh/resource-policy": "keep"
-    storageclass.kubernetes.io/is-default-class: "{{ .Values.customStorageClassEBS.isDefaultClass | default "false" }}"
-provisioner: {{ .Values.customStorageClassEBS.provisioner | default "ebs.csi.aws.com" | quote }}
-volumeBindingMode: {{ .Values.customStorageClassEBS.volumeBindingMode | default "WaitForFirstConsumer" | quote }}
-reclaimPolicy: {{ .Values.customStorageClassEBS.reclaimPolicy | default "Retain" | quote }}
-allowVolumeExpansion: {{ .Values.customStorageClassEBS.allowVolumeExpansion | default true }}
+  name: {{ .Values.airflow.customStorageClassEBS.name | quote }}
+provisioner: {{ .Values.airflow.customStorageClassEBS.provisioner | quote }}
+volumeBindingMode: {{ .Values.airflow.customStorageClassEBS.volumeBindingMode | quote }}
+reclaimPolicy: {{ .Values.airflow.customStorageClassEBS.reclaimPolicy | quote }}
+allowVolumeExpansion: {{ .Values.airflow.customStorageClassEBS.allowVolumeExpansion }}
 parameters:
-  type: {{ .Values.customStorageClassEBS.parameters.type | default "gp3" | quote }}
-  encrypted: "{{ .Values.customStorageClassEBS.parameters.encrypted | default "true" }}"
-{{- end }}
+  type: {{ .Values.airflow.customStorageClassEBS.parameters.type | quote }}
+  encrypted: "{{ .Values.airflow.customStorageClassEBS.parameters.encrypted }}"
