@@ -1,0 +1,12 @@
+{{- if .Values.opensearch.ebs.enabled }}
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: {{ .Values.opensearch.ebs.name }}
+provisioner: ebs.csi.aws.com
+parameters:
+  type: {{ .Values.opensearch.ebs.type | default "gp3" }}
+  fsType: {{ .Values.opensearch.ebs.fsType | default "ext4" }}
+reclaimPolicy: {{ .Values.opensearch.ebs.reclaimPolicy | default "Retain" }}
+volumeBindingMode: {{ .Values.opensearch.ebs.volumeBindingMode | default "WaitForFirstConsumer" }}
+{{- end }}

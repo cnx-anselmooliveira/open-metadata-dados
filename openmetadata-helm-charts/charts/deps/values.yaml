@@ -59,6 +59,13 @@ opensearch:
     limits:
       cpu: "2000m"
       memory: "2048M"
+  ebs:
+    enabled: true
+    name: "openmetadata-storage-deps-ebs"
+    type: "gp3"
+    fsType: "ext4"
+    reclaimPolicy: "Retain"
+    volumeBindingMode: "WaitForFirstConsumer"
 
 # Airflow configurations for helm dependency
 # you can find more details about this here https://github.com/airflow-helm/charts
