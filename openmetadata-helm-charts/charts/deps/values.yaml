@@ -198,15 +198,3 @@ airflow:
   permissionsPod:
     name: airflow-set-permissions
     image: alpine:3.19      
-
-  customStorageClassEBS:
-    create: true
-    name: "openmetadata-storage-efs-ebs"
-    isDefaultClass: false
-    provisioner: ebs.csi.aws.com
-    volumeBindingMode: WaitForFirstConsumer
-    reclaimPolicy: Retain
-    allowVolumeExpansion: true
-    parameters:
-      type: gp3
-      encrypted: "true"
