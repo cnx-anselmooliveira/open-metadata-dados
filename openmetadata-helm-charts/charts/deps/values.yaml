@@ -142,6 +142,20 @@ airflow:
   scheduler:
     logCleanup:
       enabled: false
+    extraVolumeMounts:
+      - mountPath: /airflow-logs
+        name: efs-airflow-logs
+      - mountPath: /airflow-dags/dags
+        name: efs-airflow-dags
+    extraVolumes:
+      - name: efs-airflow-logs
+        persistentVolumeClaim:
+          claimName: openmetadata-dependencies-logs-pvc
+      - name: efs-airflow-dags
+        persistentVolumeClaim:
+          claimName: openmetadata-dependencies-dags-pvc
+    config:
+      AIRFLOW__OPENMETADATA_AIRFLOW_APIS__DAG_GENERATED_CONFIGS: "/airflow-dags/dags"
 
   dags:
     path: /airflow-dags/dags
@@ -167,38 +181,38 @@ airflow:
   #     storageClass: openmetadata-storage-efs-logs
   #     subPath: airflow-logs
 
-  pv:
-    logs:
-      name: openmetadata-logs-pv
-      labels:
-        app: airflow-logs
-      storage: 20Gi
-      storageClassName: "efs-sc"
-      reclaimPolicy: Retain
-      volumeHandle: fs-0cdb18f9aa2b0fdb2:/airflow-logs
-      mountPath: /airflow-logs
+  # pv:
+  #   logs:
+  #     name: openmetadata-logs-pv
+  #     labels:
+  #       app: airflow-logs
+  #     storage: 20Gi
+  #     storageClassName: "efs-sc"
+  #     reclaimPolicy: Retain
+  #     volumeHandle: fs-0cdb18f9aa2b0fdb2:/airflow-logs
+  #     mountPath: /airflow-logs
 
-    dags:
-      name: openmetadata-dags-pv
-      labels:
-        app: airflow-dags
-      storage: 20Gi
-      storageClassName: "efs-sc"
-      reclaimPolicy: Retain
-      volumeHandle: fs-0bb75839f7263e6fe:/airflow-dags
-      mountPath: /airflow-dags/dags
+  #   dags:
+  #     name: openmetadata-dags-pv
+  #     labels:
+  #       app: airflow-dags
+  #     storage: 20Gi
+  #     storageClassName: "efs-sc"
+  #     reclaimPolicy: Retain
+  #     volumeHandle: fs-0bb75839f7263e6fe:/airflow-dags
+  #     mountPath: /airflow-dags/dags
 
-  pvc:
-    logs:
-      name: openmetadata-dependencies-logs-pvc
-      labels:
-        app: airflow-logs
-      storage: 20Gi
-      storageClassName: "efs-sc"
+  # pvc:
+  #   logs:
+  #     name: openmetadata-dependencies-logs-pvc
+  #     labels:
+  #       app: airflow-logs
+  #     storage: 20Gi
+  #     storageClassName: "efs-sc"
 
-    dags:
-      name: openmetadata-dependencies-dags-pvc
-      labels:
-        app: airflow-dags
-      storage: 20Gi
-      storageClassName: "efs-sc"
+  #   dags:
+  #     name: openmetadata-dependencies-dags-pvc
+  #     labels:
+  #       app: airflow-dags
+  #     storage: 20Gi
+  #     storageClassName: "efs-sc"
