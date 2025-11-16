@@ -202,7 +202,3 @@ airflow:
         app: airflow-dags
       storage: 20Gi
       storageClassName: "efs-sc"
-
-  permissionsPod:
-    name: airflow-set-permissions
-    image: alpine:3.19      
