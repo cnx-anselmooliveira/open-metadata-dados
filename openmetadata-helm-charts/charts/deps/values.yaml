@@ -159,6 +159,18 @@ airflow:
   #     storageClass: openmetadata-storage-efs-logs
   #     subPath: airflow-logs
 
+  customStorageClassEBS:
+    create: true
+    name: "openmetadata-storage-deps-ebs"
+    isDefaultClass: "false"
+    provisioner: "ebs.csi.aws.com"
+    volumeBindingMode: "WaitForFirstConsumer"
+    reclaimPolicy: "Retain"
+    allowVolumeExpansion: true
+    parameters:
+      type: "gp3"
+      encrypted: "true"
+
   pv:
     logs:
       name: openmetadata-logs-pv
