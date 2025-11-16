@@ -159,43 +159,53 @@ airflow:
   #     storageClass: openmetadata-storage-efs-logs
   #     subPath: airflow-logs
 
-
-pv:
-  logs:
-    name: openmetadata-logs-pv
-    labels:
-      app: airflow-logs
-    storage: 20Gi
-    storageClassName: "efs-sc"
+  customStorageClassEBS:
+    create: true
+    isDefaultClass: false
+    provisioner: ebs.csi.aws.com
+    volumeBindingMode: WaitForFirstConsumer
     reclaimPolicy: Retain
-    volumeHandle: fs-0cdb18f9aa2b0fdb2::airflow-logs
-    mountPath: /airflow-logs
+    allowVolumeExpansion: true
+    parameters:
+      type: gp3
+      encrypted: "true"
 
-  dags:
-    name: openmetadata-dags-pv
-    labels:
-      app: airflow-dags
-    storage: 20Gi
-    storageClassName: "efs-sc"
-    reclaimPolicy: Retain
-    volumeHandle: fs-0bb75839f7263e6fe::airflow-dags
-    mountPath: /airflow-dags/dags
+  pv:
+    logs:
+      name: openmetadata-logs-pv
+      labels:
+        app: airflow-logs
+      storage: 20Gi
+      storageClassName: "efs-sc"
+      reclaimPolicy: Retain
+      volumeHandle: fs-0cdb18f9aa2b0fdb2::airflow-logs
+      mountPath: /airflow-logs
 
-pvc:
-  logs:
-    name: openmetadata-dependencies-logs-pvc
-    labels:
-      app: airflow-logs
-    storage: 20Gi
-    storageClassName: "efs-sc"
+    dags:
+      name: openmetadata-dags-pv
+      labels:
+        app: airflow-dags
+      storage: 20Gi
+      storageClassName: "efs-sc"
+      reclaimPolicy: Retain
+      volumeHandle: fs-0bb75839f7263e6fe::airflow-dags
+      mountPath: /airflow-dags/dags
 
-  dags:
-    name: openmetadata-dependencies-dags-pvc
-    labels:
-      app: airflow-dags
-    storage: 20Gi
-    storageClassName: "efs-sc"
+  pvc:
+    logs:
+      name: openmetadata-dependencies-logs-pvc
+      labels:
+        app: airflow-logs
+      storage: 20Gi
+      storageClassName: "efs-sc"
 
-permissionsPod:
-  name: airflow-set-permissions
-  image: alpine:3.19      
+    dags:
+      name: openmetadata-dependencies-dags-pvc
+      labels:
+        app: airflow-dags
+      storage: 20Gi
+      storageClassName: "efs-sc"
+
+  permissionsPod:
+    name: airflow-set-permissions
+    image: alpine:3.19      
