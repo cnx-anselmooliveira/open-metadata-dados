@@ -142,18 +142,6 @@ airflow:
   scheduler:
     logCleanup:
       enabled: false
-    extraVolumeMounts:
-      - mountPath: /airflow-logs
-        name: efs-airflow-logs
-      - mountPath: /airflow-dags/dags
-        name: efs-airflow-dags
-    extraVolumes:
-      - name: efs-airflow-logs
-        persistentVolumeClaim:
-          claimName: openmetadata-dependencies-logs-pvc
-      - name: efs-airflow-dags
-        persistentVolumeClaim:
-          claimName: openmetadata-dependencies-dags-pvc
     config:
       AIRFLOW__OPENMETADATA_AIRFLOW_APIS__DAG_GENERATED_CONFIGS: "/airflow-dags/dags"
 
