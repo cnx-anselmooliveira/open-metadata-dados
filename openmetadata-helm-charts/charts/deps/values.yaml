@@ -133,7 +133,7 @@ airflow:
     host: open-metadata-rds.cluster-csnm8wgeu38w.us-east-1.rds.amazonaws.com
     port: 5432
     database: airflow_db
-    user: user_airflow_open
+    user: airflow_user
     passwordSecret: airflow-postgres-secrets
     passwordSecretKey: airflow-postgres-password
   serviceAccount:
