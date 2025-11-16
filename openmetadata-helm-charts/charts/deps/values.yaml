@@ -71,6 +71,7 @@ opensearch:
 # you can find more details about this here https://github.com/airflow-helm/charts
 airflow:
   enabled: true
+  namespace: "open-metadata"
   airflow:
     image:
       repository: docker.getcollate.io/openmetadata/ingestion
