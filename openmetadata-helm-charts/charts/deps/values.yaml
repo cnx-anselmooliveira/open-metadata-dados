@@ -142,14 +142,14 @@ airflow:
   scheduler:
     logCleanup:
       enabled: false
-  dags:
-    path: /airflow-dags/dags
-    persistence:
-      enabled: false
-  logs:
-    path: /airflow-logs
-    persistence:
-      enabled: false
+  # dags:
+  #   path: /airflow-dags/dags
+  #   persistence:
+  #     enabled: false
+  # logs:
+  #   path: /airflow-logs
+  #   persistence:
+  #     enabled: false
 
   # dags:
   #   path: /airflow-dags/dags
@@ -165,6 +165,25 @@ airflow:
   #     existingClaim: openmetadata-dependencies-logs-pvc
   #     storageClass: openmetadata-storage-efs-logs
   #     subPath: airflow-logs
+
+  dags:
+    persistence:
+      enabled: true
+      # NOTE: "" means cluster-default
+      storageClass: ""
+      size: 1Gi
+      accessMode: ReadWriteMany
+  logs:
+    persistence:
+      enabled: true
+      # empty string means cluster-default
+      storageClass: ""
+      accessMode: ReadWriteMany
+      size: 1Gi
+      cleanup:
+        enabled: false
+        schedule: "0 4 * * *"
+        retainDays: 180
 
   pv:
     logs:
