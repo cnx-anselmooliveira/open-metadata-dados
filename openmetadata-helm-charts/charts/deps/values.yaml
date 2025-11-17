@@ -153,10 +153,9 @@ airflow:
   dags:
     persistence:
       enabled: true
-      # NOTE: "" means cluster-default
-      storageClass: ""
-      size: 1Gi
-      accessMode: ReadWriteMany
+      existingClaim: airflow-dags
+      storageClass: efs-dags
+      subPath: airflow-dags
   logs:
     persistence:
       enabled: true
@@ -166,8 +165,6 @@ airflow:
       size: 1Gi
       cleanup:
         enabled: false
-        schedule: "0 4 * * *"
-        retainDays: 180
 
   # pv:
   #   logs:
