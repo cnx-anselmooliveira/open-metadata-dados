@@ -142,14 +142,26 @@ airflow:
   scheduler:
     logCleanup:
       enabled: false
+  # dags:
+  #   path: /airflow-dags/dags
+  #   persistence:
+  #     enabled: false
+  # logs:
+  #   path: /airflow-logs
+  #   persistence:
+  #     enabled: false
   dags:
-    path: /airflow-dags/dags
     persistence:
-      enabled: false
+      enabled: true
+      existingClaim: airflow-dags
+      storageClass: efs-dags
+      subPath: airflow-dags
   logs:
-    path: /airflow-logs
     persistence:
-      enabled: false
+      enabled: true
+      existingClaim: airflow-logs
+      storageClass: efs-logs
+      subPath: airflow-logs
 
   # pv:
   #   logs:
