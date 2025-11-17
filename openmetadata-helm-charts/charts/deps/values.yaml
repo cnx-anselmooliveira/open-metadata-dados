@@ -170,14 +170,13 @@ airflow:
     persistence:
       enabled: true
       # NOTE: "" means cluster-default
-      storageClass: ""
+      storageClass: "openmetadata-dependencies-dags-pvc"
       size: 1Gi
       accessMode: ReadWriteMany
   logs:
     persistence:
       enabled: true
-      # empty string means cluster-default
-      storageClass: ""
+      storageClass: "openmetadata-dependencies-logs-pvc"
       accessMode: ReadWriteMany
       size: 1Gi
       cleanup:
