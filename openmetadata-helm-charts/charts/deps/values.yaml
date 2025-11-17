@@ -153,15 +153,21 @@ airflow:
   dags:
     persistence:
       enabled: true
-      existingClaim: airflow-dags
-      storageClass: efs-dags
-      subPath: airflow-dags
+      # NOTE: "" means cluster-default
+      storageClass: ""
+      size: 1Gi
+      accessMode: ReadWriteMany
   logs:
     persistence:
       enabled: true
-      existingClaim: airflow-logs
-      storageClass: efs-logs
-      subPath: airflow-logs
+      # empty string means cluster-default
+      storageClass: ""
+      accessMode: ReadWriteMany
+      size: 1Gi
+      cleanup:
+        enabled: false
+        schedule: "0 4 * * *"
+        retainDays: 180
 
   # pv:
   #   logs:
