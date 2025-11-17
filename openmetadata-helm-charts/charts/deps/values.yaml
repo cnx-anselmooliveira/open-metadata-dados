@@ -173,7 +173,7 @@ airflow:
       storage: 20Gi
       storageClassName: ""
       reclaimPolicy: Retain
-      volumeHandle: fs-0a37bbb31fa560e98:/airflow-logs
+      volumeHandle: fs-0c2e17ec40396262c:/airflow-logs
       mountPath: /airflow-logs
 
     dags:
@@ -183,7 +183,7 @@ airflow:
       storage: 20Gi
       storageClassName: ""
       reclaimPolicy: Retain
-      volumeHandle: fs-042e52fb540654da0:/airflow-dags
+      volumeHandle: fs-0c99de813cd05e526:/airflow-dags
       mountPath: /airflow-dags/dags
 
   pvc:
