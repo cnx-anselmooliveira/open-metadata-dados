@@ -185,38 +185,38 @@ airflow:
         schedule: "0 4 * * *"
         retainDays: 180
 
-  pv:
-    logs:
-      name: openmetadata-logs-pv
-      labels:
-        app: airflow-logs
-      storage: 20Gi
-      storageClassName: ""
-      reclaimPolicy: Retain
-      volumeHandle: fs-0a37bbb31fa560e98:/airflow-logs
-      mountPath: /airflow-logs
+  # pv:
+  #   logs:
+  #     name: openmetadata-logs-pv
+  #     labels:
+  #       app: airflow-logs
+  #     storage: 20Gi
+  #     storageClassName: ""
+  #     reclaimPolicy: Retain
+  #     volumeHandle: fs-0a37bbb31fa560e98:/airflow-logs
+  #     mountPath: /airflow-logs
 
-    dags:
-      name: openmetadata-dags-pv
-      labels:
-        app: airflow-dags
-      storage: 20Gi
-      storageClassName: ""
-      reclaimPolicy: Retain
-      volumeHandle: fs-042e52fb540654da0:/airflow-dags
-      mountPath: /airflow-dags/dags
+  #   dags:
+  #     name: openmetadata-dags-pv
+  #     labels:
+  #       app: airflow-dags
+  #     storage: 20Gi
+  #     storageClassName: ""
+  #     reclaimPolicy: Retain
+  #     volumeHandle: fs-042e52fb540654da0:/airflow-dags
+  #     mountPath: /airflow-dags/dags
 
-  pvc:
-    logs:
-      name: openmetadata-dependencies-logs-pvc
-      labels:
-        app: airflow-logs
-      storage: 20Gi
-      storageClassName: ""
+  # pvc:
+  #   logs:
+  #     name: openmetadata-dependencies-logs-pvc
+  #     labels:
+  #       app: airflow-logs
+  #     storage: 20Gi
+  #     storageClassName: ""
 
-    dags:
-      name: openmetadata-dependencies-dags-pvc
-      labels:
-        app: airflow-dags
-      storage: 20Gi
-      storageClassName: ""
+  #   dags:
+  #     name: openmetadata-dependencies-dags-pvc
+  #     labels:
+  #       app: airflow-dags
+  #     storage: 20Gi
+  #     storageClassName: ""
