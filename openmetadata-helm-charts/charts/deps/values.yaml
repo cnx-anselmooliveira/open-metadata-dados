@@ -159,10 +159,9 @@ airflow:
   logs:
     persistence:
       enabled: true
-      # empty string means cluster-default
-      storageClass: ""
-      accessMode: ReadWriteMany
-      size: 1Gi
+      existingClaim: airflow-logs
+      storageClass: efs-logs
+      subPath: airflow-logs
       cleanup:
         enabled: false
 
