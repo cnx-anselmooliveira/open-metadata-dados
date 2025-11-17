@@ -142,14 +142,14 @@ airflow:
   scheduler:
     logCleanup:
       enabled: false
-  # dags:
-  #   path: /airflow-dags/dags
-  #   persistence:
-  #     enabled: false
-  # logs:
-  #   path: /airflow-logs
-  #   persistence:
-  #     enabled: false
+  dags:
+    path: /airflow-dags/dags
+    persistence:
+      enabled: false
+  logs:
+    path: /airflow-logs
+    persistence:
+      enabled: false
 
   pv:
     logs:
