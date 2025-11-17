@@ -150,20 +150,6 @@ airflow:
   #   path: /airflow-logs
   #   persistence:
   #     enabled: false
-  dags:
-    persistence:
-      enabled: true
-      existingClaim: airflow-dags
-      storageClass: efs-dags
-      subPath: airflow-dags
-  logs:
-    persistence:
-      enabled: true
-      existingClaim: airflow-logs
-      storageClass: efs-logs
-      subPath: airflow-logs
-      cleanup:
-        enabled: false
 
   pv:
     logs:
