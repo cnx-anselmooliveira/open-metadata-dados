@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Values.pv.logs.name }}
+  labels:
+    app: {{ .Values.pv.logs.labels.app }}
+spec:
+  capacity:
+    storage: {{ .Values.pv.logs.storage }}
+  storageClassName: {{ .Values.pv.logs.storageClassName | quote }}
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: {{ .Values.pv.logs.reclaimPolicy }}
+  csi:
+    driver: efs.csi.aws.com
+    volumeHandle: {{ .Values.pv.logs.volumeHandle }}
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Values.pvc.logs.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.pvc.logs.labels.app }}
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: {{ .Values.pvc.logs.storageClassName | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.pvc.logs.storage }}

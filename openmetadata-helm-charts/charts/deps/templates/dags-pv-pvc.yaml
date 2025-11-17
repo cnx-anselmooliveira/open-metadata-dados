@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Values.pv.dags.name }}
+  labels:
+    app: {{ .Values.pv.dags.labels.app }}
+spec:
+  capacity:
+    storage: {{ .Values.pv.dags.storage }}
+  storageClassName: {{ .Values.pv.dags.storageClassName | quote }}
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: {{ .Values.pv.dags.reclaimPolicy }}
+  csi:
+    driver: efs.csi.aws.com
+    volumeHandle: {{ .Values.pv.dags.volumeHandle }}
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app: {{ .Values.pvc.dags.labels.app }}
+  name: {{ .Values.pvc.dags.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: {{ .Values.pvc.dags.storageClassName | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.pvc.dags.storage }}
