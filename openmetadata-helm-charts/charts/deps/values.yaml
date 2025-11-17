@@ -142,29 +142,29 @@ airflow:
   scheduler:
     logCleanup:
       enabled: false
-  # dags:
-  #   path: /airflow-dags/dags
-  #   persistence:
-  #     enabled: false
-  # logs:
-  #   path: /airflow-logs
-  #   persistence:
-  #     enabled: false
-
   dags:
     path: /airflow-dags/dags
     persistence:
-      enabled: true
-      existingClaim: openmetadata-dependencies-dags-pvc
-      storageClass: openmetadata-storage-efs-dags
-      subPath: airflow-dags
+      enabled: false
   logs:
     path: /airflow-logs
     persistence:
-      enabled: true
-      existingClaim: openmetadata-dependencies-logs-pvc
-      storageClass: openmetadata-storage-efs-logs
-      subPath: airflow-logs
+      enabled: false
+
+  # dags:
+  #   path: /airflow-dags/dags
+  #   persistence:
+  #     enabled: true
+  #     existingClaim: openmetadata-dependencies-dags-pvc
+  #     storageClass: openmetadata-storage-efs-dags
+  #     subPath: airflow-dags
+  # logs:
+  #   path: /airflow-logs
+  #   persistence:
+  #     enabled: true
+  #     existingClaim: openmetadata-dependencies-logs-pvc
+  #     storageClass: openmetadata-storage-efs-logs
+  #     subPath: airflow-logs
 
   # pv:
   #   logs:
