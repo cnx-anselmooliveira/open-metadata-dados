@@ -146,13 +146,17 @@ airflow:
       AIRFLOW__OPENMETADATA_AIRFLOW_APIS__DAG_GENERATED_CONFIGS: "/airflow-dags/dags"
 
   dags:
-    path: /airflow-dags/dags
     persistence:
-      enabled: false
+      enabled: true
+      existingClaim: airflow-dags
+      storageClass: efs-dags
+      subPath: airflow-dags
   logs:
-    path: /airflow-logs
     persistence:
-      enabled: false
+      enabled: true
+      existingClaim: airflow-logs
+      storageClass: efs-logs
+      subPath: airflow-logs
 
   # dags:
   #   path: /airflow-dags/dags
