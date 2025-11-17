@@ -172,7 +172,7 @@ airflow:
       labels:
         app: airflow-logs
       storage: 20Gi
-      storageClassName: "efs-sc"
+      storageClassName: ""
       reclaimPolicy: Retain
       volumeHandle: fs-0a37bbb31fa560e98:/airflow-logs
       mountPath: /airflow-logs
@@ -182,7 +182,7 @@ airflow:
       labels:
         app: airflow-dags
       storage: 20Gi
-      storageClassName: "efs-sc"
+      storageClassName: ""
       reclaimPolicy: Retain
       volumeHandle: fs-042e52fb540654da0:/airflow-dags
       mountPath: /airflow-dags/dags
@@ -193,11 +193,11 @@ airflow:
       labels:
         app: airflow-logs
       storage: 20Gi
-      storageClassName: "efs-sc"
+      storageClassName: ""
 
     dags:
       name: openmetadata-dependencies-dags-pvc
       labels:
         app: airflow-dags
       storage: 20Gi
-      storageClassName: "efs-sc"
+      storageClassName: ""
