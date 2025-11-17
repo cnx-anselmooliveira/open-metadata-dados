@@ -94,6 +94,19 @@ airflow:
       email: spiderman@superhero.org
       firstName: Peter
       lastName: Parker
+    extraVolumeMounts:
+      - mountPath: /airflow-logs
+        name: efs-airflow-logs
+      - mountPath: /airflow-dags/dags
+        name: efs-airflow-dags
+    extraVolumes:
+      - name: efs-airflow-logs
+        persistentVolumeClaim:
+          claimName: openmetadata-dependencies-logs-pvc
+      - name: efs-airflow-dags
+        persistentVolumeClaim:
+          claimName: openmetadata-dependencies-dags-pvc
+
   web:
     readinessProbe:
       enabled: true
@@ -129,19 +142,14 @@ airflow:
   scheduler:
     logCleanup:
       enabled: false
-
   dags:
+    path: /airflow-dags/dags
     persistence:
-      enabled: true
-      existingClaim: airflow-dags
-      storageClass: efs-dags
-      subPath: airflow-dags
+      enabled: false
   logs:
+    path: /airflow-logs
     persistence:
-      enabled: true
-      existingClaim: airflow-logs
-      storageClass: efs-logs
-      subPath: airflow-logs
+      enabled: false
 
   # dags:
   #   path: /airflow-dags/dags
