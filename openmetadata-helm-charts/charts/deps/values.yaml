@@ -150,39 +150,3 @@ airflow:
     path: /airflow-logs
     persistence:
       enabled: false
-
-  pv:
-    logs:
-      name: openmetadata-logs-pv
-      labels:
-        app: airflow-logs
-      storage: 20Gi
-      storageClassName: ""
-      reclaimPolicy: Retain
-      volumeHandle: fs-087656a9f7cf164d9:/airflow-logs
-      mountPath: /airflow-logs
-
-    dags:
-      name: openmetadata-dags-pv
-      labels:
-        app: airflow-dags
-      storage: 20Gi
-      storageClassName: ""
-      reclaimPolicy: Retain
-      volumeHandle: fs-087087a5b1e891c4f:/airflow-dags
-      mountPath: /airflow-dags/dags
-
-  pvc:
-    logs:
-      name: openmetadata-dependencies-logs-pvc
-      labels:
-        app: airflow-logs
-      storage: 20Gi
-      storageClassName: ""
-
-    dags:
-      name: openmetadata-dependencies-dags-pvc
-      labels:
-        app: airflow-dags
-      storage: 20Gi
-      storageClassName: ""
