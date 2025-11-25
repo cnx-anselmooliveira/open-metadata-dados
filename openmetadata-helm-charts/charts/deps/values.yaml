@@ -130,7 +130,7 @@ airflow:
     enabled: false
   externalDatabase:
     type: postgres
-    host: open-metadata-database.cluster-csnm8wgeu38w.us-east-1.rds.amazonaws.com
+    host: open-db.cluster-csnm8wgeu38w.us-east-1.rds.amazonaws.com
     port: 5432
     database: airflow_db
     user: airflow_user
