@@ -31,32 +31,24 @@ openmetadata:
       maxThreads: 50
       minThreads: 10
       idleThreadTimeout: "1 minute"
+
     elasticsearch:
       enabled: true
       host: opensearch
       searchType: opensearch
-      port: 9200
-      scheme: http
-      clusterAlias: ""
-      # Value in Bytes
-      payLoadSize: 10485760
+      port: 443
+      scheme: https
       connectionTimeoutSecs: 5
       socketTimeoutSecs: 60
-      batchSize: 100
-      searchIndexMappingLanguage: "EN"
       keepAliveTimeoutSecs: 600
-      trustStore:
-        enabled: false
-        path: ""
-        password:
-          secretRef: "elasticsearch-truststore-secrets"
-          secretKey: "openmetadata-elasticsearch-truststore-password"
+      batchSize: 10
       auth:
-        enabled: false
-        username: "elasticsearch"
+        enabled: true
+        username: open-metadata-opensearch
         password:
           secretRef: elasticsearch-secrets
           secretKey: openmetadata-elasticsearch-password
+
     database:
       enabled: true
       host: database-1.cluster-csnm8wgeu38w.us-east-1.rds.amazonaws.com
