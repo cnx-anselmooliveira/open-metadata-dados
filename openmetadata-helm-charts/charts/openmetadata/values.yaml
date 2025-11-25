@@ -59,16 +59,16 @@ openmetadata:
           secretKey: openmetadata-elasticsearch-password
     database:
       enabled: true
-      host: mysql
-      port: 3306
-      driverClass: com.mysql.cj.jdbc.Driver
-      dbScheme: mysql
+      host: open-db.cluster-csnm8wgeu38w.us-east-1.rds.amazonaws.com
+      port: 5432
+      driverClass: org.postgresql.Driver
+      dbScheme: postgresql
       databaseName: openmetadata_db
       auth:
         username: openmetadata_user
         password:
-          secretRef: mysql-secrets
-          secretKey: openmetadata-mysql-password
+          secretRef: postgres-secrets
+          secretKey: openmetadata-postgres-password
       dbParams: "allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC"
       maxSize: 50
       minSize: 10
