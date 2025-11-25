@@ -82,7 +82,7 @@ airflow:
       # This is required for OpenMetadata UI to fetch status of DAGs
       AIRFLOW__API__AUTH_BACKENDS: "airflow.api.auth.backend.session,airflow.api.auth.backend.basic_auth"
       # OpenMetadata Airflow Apis Plugin DAGs Configuration
-      AIRFLOW__OPENMETADATA_AIRFLOW_APIS__DAG_GENERATED_CONFIGS: "/opt/airflow/dags"
+      AIRFLOW__OPENMETADATA_AIRFLOW_APIS__DAG_GENERATED_CONFIGS: "/airflow-dags/dags"
       # OpenMetadata Airflow Secrets Manager Configuration
       AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_REGION: ""
       AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_ACCESS_KEY_ID: ""
